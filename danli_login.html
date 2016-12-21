@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #loginIn{ position: fixed; left: 25%; top: 25%; right: 0; bottom: 0; background-color: rgba(0,0,0,.6); width: 50%; height: 50%; }
+        #span{display: block; width: 50px; height: 50px; line-height: 50px; background-color: red; margin: 30% auto; }
+    </style>
+</head>
+<body>
+<button id="login">登录</button>
+<script>
+    /*
+    * 单例对象
+    * 登录框
+    * 860026526@qq.com
+    * */
+    var login;  //定义一个全局变量；
+    var isLogin = (function(){  //自执行函数
+        return function(){  //闭包
+            if( !login ){   //判断是否存在登录窗口；
+                login = document.createElement('div');  //创建登录div
+                login.innerHTML = '这是一个登录窗口';
+                login.style.display = 'none';
+                document.body.appendChild(login);
+            }
+            return login;   //如果已经存在登陆窗口，直接返回；
+        }
+    })();
+
+    var loginIn = document.getElementById('login'); //获取id
+    loginIn.onclick = function(){
+        var loginClick = isLogin();  //闭包赋值
+        loginClick.style.display = 'block';
+    }
+
+</script>
+</body>
+</html>
