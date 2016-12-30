@@ -10,6 +10,7 @@
 </head>
 <body>
 <button id="login">登录</button>
+<button id="close">关闭</button>
 <script>
     /*
     * 单例对象
@@ -33,6 +34,11 @@
     loginIn.onclick = function(){
         var loginClick = isLogin();  //闭包赋值
         loginClick.style.display = 'block';
+    }
+    close.onclick = function(){
+        var loginClose = document.getElementById("login");
+        document.body.removeChild(loginClose);
+        login = null;
     }
 
 </script>
